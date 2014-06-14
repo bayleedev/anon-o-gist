@@ -1,14 +1,17 @@
 @extends('layouts.master')
 
 @section('sidebar')
-	<div id="sidebar">
+	<ul id="sidebar">
 		@foreach ($gists as $gist)
-			<p>This is gist {{ $gist->id }}</p>
+			<li><a href="/gist/{{ $gist->id }}">{{ $gist->name }}</a>
 		@endforeach
-	</div>
+	</ul>
 @stop
 
 @section('content')
+	@if($errors->any())
+	<h4>{{$errors->first()}}</h4>
+	@endif
 	{{ Form::open(array('action' => 'GistsController@store')) }}
 		<div class="field name">
 			{{ Form::text('name', null, array('placeholder' => 'Filename')) }}

@@ -22,7 +22,11 @@ class GistsController extends \BaseController {
 	public function store()
 	{
 		$gist = Gist::create($this->gist_params());
-		return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist created!');
+		if ($gist->save()) {
+			return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist created!');
+		} else {
+			return Redirect::to('/')->withErrors($gist->errors());
+		}
 	}
 
 	/**
@@ -47,9 +51,12 @@ class GistsController extends \BaseController {
 	public function update($id)
 	{
 		$gist = Gist::find($id);
-		$gist->update($this->gist_params());
-		$gist->save();
-		return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist updated!');
+		if ($gist->password == Request::get('password') && !empty($gist->password)) {
+			$gist->update($this->gist_params());
+			$gist->save();
+			return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist updated!');
+		}
+			return Redirect::to("/gist/{$gist->id}")->with('message', 'Incorrect password!');
 	}
 
 	/**
@@ -68,13 +75,12 @@ class GistsController extends \BaseController {
 	}
 
 	protected function gist_params() {
-		return array_filter(array(
+		return array_filter([
 			'name' => Request::get('name'),
 			'body' => Request::get('body'),
 			'password' => Request::get('password'),
-			'flags' => 0,
-		), function($el) {
-			return strlen($el) > 0;
+		], function($el) {
+			return !empty($el);
 		});
 	}
 

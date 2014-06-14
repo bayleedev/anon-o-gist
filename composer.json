@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"blainesch/laravel-pretty-controller": "0.0.1"
+		"blainesch/laravel-pretty-controller": "0.0.1",
+		"laravelbook/ardent": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "2.*"
