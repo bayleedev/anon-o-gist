@@ -3,14 +3,17 @@
 @section('sidebar')
 	<ul id="sidebar">
 		@foreach ($gists as $gist)
-			<li><a href="/gist/{{ $gist->id }}">{{ $gist->name }}</a>
+			<li>
+				<a href="/gist/{{ $gist->id }}">{{ $gist->name }}</a>
+				<p>{{ $gist->excerpt() }}</p>
+			</li>
 		@endforeach
 	</ul>
 @stop
 
 @section('content')
 	@if($errors->any())
-	<h4>{{$errors->first()}}</h4>
+		<h4>{{$errors->first()}}</h4>
 	@endif
 	{{ Form::open(array('action' => 'GistsController@store')) }}
 		<div class="field name">

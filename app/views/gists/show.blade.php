@@ -2,7 +2,7 @@
 
 @section('content')
 	@if($errors->any())
-	<h4>{{$errors->first()}}</h4>
+		<h4>{{$errors->first()}}</h4>
 	@endif
 	{{ Form::open(array('method' => 'put', 'action' => array('GistsController@update', $gist->id))) }}
 		<div class="field flags">
@@ -15,7 +15,7 @@
 		<div class="field body">
 			{{ Form::textarea('body', $gist->body, array('placeholder' => 'Code contents')) }}
 		</div>
-		@if($gist->password)
+		@if($gist->hasPassword())
 			<div class="field password">
 				{{ Form::password('password', null, array('placeholder' => 'password')) }}
 			</div>
@@ -25,7 +25,7 @@
 		@endif
 	{{ Form::close() }}
 
-	@if($gist->password)
+	@if($gist->hasPassword())
 		{{ Form::open(array('action' => array('GistsController@flag', $gist->id))) }}
 			<div class="field buttons submit">
 				{{ Form::submit('Flag') }}
