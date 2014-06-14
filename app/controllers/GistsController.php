@@ -8,20 +8,9 @@ class GistsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function indexAction()
 	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /gists/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+		return ['gists' => Gist::all()->take(10) ];
 	}
 
 	/**
@@ -32,7 +21,8 @@ class GistsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$gist = Gist::create($this->gist_params());
+		return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist created!');
 	}
 
 	/**
@@ -42,21 +32,9 @@ class GistsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function showAction($id)
 	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /gists/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		return ['gist' => Gist::find($id)];
 	}
 
 	/**
@@ -68,19 +46,36 @@ class GistsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$gist = Gist::find($id);
+		$gist->update($this->gist_params());
+		$gist->save();
+		return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist updated!');
 	}
 
 	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /gists/{id}
+	 * Update the specified resource in storage.
+	 * POST /gists/flag/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function flag($id)
 	{
-		//
+		$gist = Gist::find($id);
+		$gist->flags++;
+		$gist->save();
+		return Redirect::to("/gist/{$gist->id}")->with('message', 'Gist Flagged!');
+	}
+
+	protected function gist_params() {
+		return array_filter(array(
+			'name' => Request::get('name'),
+			'body' => Request::get('body'),
+			'password' => Request::get('password'),
+			'flags' => 0,
+		), function($el) {
+			return strlen($el) > 0;
+		});
 	}
 
 }

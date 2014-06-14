@@ -1,1 +1,0 @@
-/Users/bschmeisser/sites/devup/apps/anon-o-gist/app/views/gists/create.blade.php

@@ -11,7 +11,17 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array(
+	'uses' => 'GistsController@index',
+));
+Route::post('/gist/flag/{id}', array(
+	'uses' => 'GistsController@flag',
+));
+Route::resource('gist', 'GistsController', array(
+	'only' => array(
+		'index',
+		'store',
+		'show',
+		'update',
+	),
+));
