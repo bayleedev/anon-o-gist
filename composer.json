@@ -7,7 +7,9 @@
 		"laravel/framework": "4.2.*",
 		"blainesch/laravel-pretty-controller": "0.0.1",
 		"laravelbook/ardent": "dev-master",
-		"guilhermeguitte/behat-laravel": "dev-master"
+		"guilhermeguitte/behat-laravel": "dev-master",
+		"behat/mink": "1.5@stable",
+		"behat/mink-goutte-driver": "*"
 	},
 	"require-dev": {
 		"way/generators": "2.*"
