@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('sidebar')
-	<ul id="sidebar">
+	<ul class="gists" id="sidebar">
 		@foreach ($gists as $gist)
 			<li>
 				<a href="/gist/{{ $gist->id }}">{{ $gist->name }}</a>

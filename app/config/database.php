@@ -1,5 +1,7 @@
 <?php
 
+$testMode = (defined('PHP_SAPI') && PHP_SAPI === 'cli') || (!empty($_SERVER['HTTP_ACCEPT_ENV']) && $_SERVER['HTTP_ACCEPT_ENV'] == 'test');
+
 return array(
 
 	/*
@@ -48,7 +50,7 @@ return array(
 
 		'sqlite' => array(
 			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
+			'database' => $testMode ? __DIR__.'/../database/test.sqlite' : __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
 
