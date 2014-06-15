@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Anon-O-Gist
+@stop
+
 @section('sidebar')
 	<ul class="gists" id="sidebar">
 		@foreach ($gists as $gist)
@@ -19,8 +23,12 @@
 		<div class="field name">
 			{{ Form::text('name', null, array('placeholder' => 'Filename')) }}
 		</div>
-		<div class="field body">
-			{{ Form::textarea('body', null, array('placeholder' => 'Code contents')) }}
+		<div class="row">
+			<div class="col-md-8">
+				<div class="field body">
+					{{ Form::textarea('body', null, array('placeholder' => 'Code contents', 'id' => 'code')) }}
+				</div>
+			</div>
 		</div>
 		<div class="field password">
 			{{ Form::password('password', null, array('placeholder' => 'password')) }}
