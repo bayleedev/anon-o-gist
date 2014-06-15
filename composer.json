@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"blainesch/laravel-pretty-controller": "0.0.1",
-		"laravelbook/ardent": "dev-master"
+		"laravelbook/ardent": "dev-master",
+		"guilhermeguitte/behat-laravel": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "2.*"
@@ -35,7 +36,8 @@
 		]
 	},
 	"config": {
-		"preferred-install": "dist"
+		"preferred-install": "dist",
+		"bin-dir": "bin/"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }
