@@ -7,14 +7,15 @@ This project includes a `Gist` resouce. This includes a controller, a model, som
 Use [this guide](http://jenssegers.be/blog/49/installing-the-php-mcrypt-extension-on-osx-10-9-mavericks) for help on installing mcrypt.
 
 #### Mcrypt setup when using brew and system php54:
-`brew update`
-`brew tap homebrew/homebrew-php`
-`brew install php54-mcrypt`
-`sudo mkdir -p /Library/Server/Web/Config/php`
-`sudo cp /usr/local/etc/php/5.4/conf.d/ext-mcrypt.ini /Library/Server/Web/Config/php`
+~~~
+brew update
+brew tap homebrew/homebrew-php
+brew install php54-mcrypt
+sudo mkdir -p /Library/Server/Web/Config/php
+sudo cp /usr/local/etc/php/5.4/conf.d/ext-mcrypt.ini /Library/Server/Web/Config/php
+~~~
 
-Test By running:
-`php --ini`
+Test By running `php --ini`.
 
 #### Common Paths
 Routes: `app/routes.php`
