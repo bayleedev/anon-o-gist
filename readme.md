@@ -35,10 +35,19 @@ By definition unit tests cover the smallest unit of code. Code is easy to unit t
 
 We have unit tests for the `Gist` model. Some of these tests are failing, some are missing code, and some are completely blank.
 
+~~~
+cd anon-o-gist
+phpunit
+~~~
+
 ### Integration Tests
 The next step up is to test the full stack. The benefit here is you can make sure entire features work as expected and interact well with each other.
 
 Similar to the unit tests, we have broken tests, testing that are missing steps, and incomplete tests.
+
+~~~
+./artisan behat:run
+~~~
 
 ### New Features
 Implement some of these new features using Unit Tests and Integration tests!
