@@ -23,6 +23,11 @@ cd public
 php -S localhost:3001
 ~~~
 
+To run in the background:
+~~~
+php -S localhost:3001 -t public/ 1>/dev/null &
+~~~
+
 #### Common Paths
  * Routes: `app/routes.php`
  * Controllers: `app/controllers/*Controller.php`
