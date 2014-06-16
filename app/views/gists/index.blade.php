@@ -25,8 +25,19 @@ Anon-O-Gist
 		<div class="field name form-group">
 			{{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Filename')) }}
 		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="field form-group">
+					Code Syntax: 
+					<select id="syntax">
+						<option value="application/x-httpd-php">PHP</option>
+						<option value="text/x-ruby">RUBY</option>
+					</select>
+				</div>
+			</div>
+		</div>
 		<div class="row form-group">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<div class="field body">
 					{{ Form::textarea('body', null, array('placeholder' => 'Code contents', 'id' => 'code')) }}
 				</div>

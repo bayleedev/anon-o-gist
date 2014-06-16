@@ -7,6 +7,7 @@
 			<link rel="stylesheet" href="/css/bootstrap.css">
 			<link rel="stylesheet" href="/css/form.css">
 			<link rel="stylesheet" href="/css/codemirror/codemirror.css">
+			<script src="/js/jquery.js"></script>
 			<script src="/js/codemirror/codemirror.js"></script>
 			<script src="/js/codemirror/mime/htmlmixed.js"></script>
 			<script src="/js/codemirror/mime/xml.js"></script>
@@ -14,6 +15,7 @@
 			<script src="/js/codemirror/mime/css.js"></script>
 			<script src="/js/codemirror/mime/clike.js"></script>
 			<script src="/js/codemirror/mime/php.js"></script>
+			<script src="/js/codemirror/mime/ruby.js"></script>
 			<link rel="stylesheet" href="/css/codemirror/monokai.css">
 			<style type="text/css">
 				.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
@@ -36,17 +38,28 @@
 		</div>
 		@section('foot')
 			<script>
-			var editor = CodeMirror.fromTextArea(document.getElementById("code"),
-			{
-				lineNumbers:    true,
-				matchBrackets:  true,
-				mode:           "application/x-httpd-php",
-				indentUnit:     4,
-				indentWithTabs: true,
-				enterMode:      "keep",
-				tabMode:        "shift"
+
+			$(function() {
+
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"),
+				{
+					lineNumbers:    true,
+					matchBrackets:  true,
+					mode:           "application/x-httpd-php",
+					indentUnit:     4,
+					indentWithTabs: true,
+					enterMode:      "keep",
+					tabMode:        "shift"
+				});
+
+				editor.setOption("theme", "monokai");
+
+				$('#syntax').on('change', function() {
+					editor.setOption("mode", this.value);
+				});
+
 			});
-			editor.setOption("theme", "monokai");
+
 			</script>
 		@show
 	</body>

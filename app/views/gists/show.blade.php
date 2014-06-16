@@ -14,7 +14,7 @@ Edit Code
 	@endif
 	{{ Form::open(['method' => 'put', 'action' => ['GistsController@update', $gist->id]]) }}
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<div class="field flags">
 					<span>Flags</span>
 					{{ $gist->flags }}
@@ -22,14 +22,25 @@ Edit Code
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<div class="field name form-group">
 					{{ Form::text('name', $gist->name, ['class' => 'form-control', 'placeholder' => 'Filename']) }}
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
+				<div class="field form-group">
+					Code Syntax: 
+					<select id="syntax">
+						<option value="application/x-httpd-php">PHP</option>
+						<option value="text/x-ruby">RUBY</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9">
 				<div class="field body">
 					{{ Form::textarea('body', $gist->body, ['placeholder' => 'Code contents', 'id' => 'code']) }}
 				</div>
@@ -37,7 +48,7 @@ Edit Code
 		</div>
 		@if($gist->hasPassword())
 		<div class="row form-group">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<div class="field password">
 					{{ Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) }}
 				</div>
