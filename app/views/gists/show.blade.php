@@ -12,7 +12,7 @@ Edit Code
 		</div>
 	</div>
 	@endif
-	{{ Form::open(array('method' => 'put', 'action' => array('GistsController@update', $gist->id))) }}
+	{{ Form::open(['method' => 'put', 'action' => ['GistsController@update', $gist->id]]) }}
 		<div class="row">
 			<div class="col-md-8">
 				<div class="field flags">
@@ -23,34 +23,34 @@ Edit Code
 		</div>
 		<div class="row">
 			<div class="col-md-8">
-				<div class="field name">
-					{{ Form::text('name', $gist->name, array('placeholder' => 'Filename')) }}
+				<div class="field name form-group">
+					{{ Form::text('name', $gist->name, ['class' => 'form-control', 'placeholder' => 'Filename']) }}
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
 				<div class="field body">
-					{{ Form::textarea('body', $gist->body, array('placeholder' => 'Code contents', 'id' => 'code')) }}
+					{{ Form::textarea('body', $gist->body, ['placeholder' => 'Code contents', 'id' => 'code']) }}
 				</div>
 			</div>
 		</div>
 		@if($gist->hasPassword())
-		<div class="row">
+		<div class="row form-group">
 			<div class="col-md-8">
 				<div class="field password">
-					{{ Form::password('password', null, array('placeholder' => 'password')) }}
+					{{ Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) }}
 				</div>
 				<div class="field buttons submit">
-					{{ Form::submit('Update') }}
+					{{ Form::submit('Update', ['class' => 'btn btn-default']) }}
 				</div>
 		@endif
 	{{ Form::close() }}
 
 	@if($gist->hasPassword())
-		{{ Form::open(array('action' => array('GistsController@flag', $gist->id))) }}
-				<div class="field buttons submit">
-					{{ Form::submit('Flag') }}
+		{{ Form::open(['action' => ['GistsController@flag', $gist->id]]) }}
+				<div class="field buttons submit form-group">
+					{{ Form::submit('Flag', ['class' => 'btn btn-default']) }}
 				</div>
 		{{ Form::close() }}
 			</div>
