@@ -4,8 +4,6 @@ Testing is wonderful. By having tests you can feel confident in your code, onboa
 ### Overview
 This project includes a `Gist` resouce. This includes a controller, a model, some views, and some routes.
 
-Use [this guide](http://jenssegers.be/blog/49/installing-the-php-mcrypt-extension-on-osx-10-9-mavericks) for help on installing mcrypt.
-
 #### Mcrypt setup when using brew and system php54:
 ~~~
 brew update
@@ -16,6 +14,14 @@ sudo cp /usr/local/etc/php/5.4/conf.d/ext-mcrypt.ini /Library/Server/Web/Config/
 ~~~
 
 Test By running `php --ini`.
+
+#### Run it!
+~~~
+cd anon-o-gist
+php composer.phar install
+cd public
+php -S localhost:3001
+~~~
 
 #### Common Paths
 Routes: `app/routes.php`
