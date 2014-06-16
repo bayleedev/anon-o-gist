@@ -24,11 +24,11 @@ php -S localhost:3001
 ~~~
 
 #### Common Paths
-Routes: `app/routes.php`
-Controllers: `app/controllers/*Controller.php`
-Models: `app/models/*.php`
-Unit Tests: `app/tests/models/*Test.php`
-Integration Tests: `app/tests/acceptance/features/*.feature`
+ * Routes: `app/routes.php`
+ * Controllers: `app/controllers/*Controller.php`
+ * Models: `app/models/*.php`
+ * Unit Tests: `app/tests/models/*Test.php`
+ * Integration Tests: `app/tests/acceptance/features/*.feature`
 
 ### Unit Testing
 By definition unit tests cover the smallest unit of code. Code is easy to unit test when it has low dependencies and can either returns something, or has a side effect like manipulating an object.
