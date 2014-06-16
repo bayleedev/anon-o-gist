@@ -22,10 +22,11 @@
 		@show
 	</head>
 	<body>
-		@section('sidebar')
-		@show
+		<a href="/"><h1>Anon-o-gist!</h1></a>
 
 		<div class="container">
+			@section('sidebar')
+			@show
 			@if(Session::has('message'))
 				<div class="alert-box message">
 					<h2>{{ Session::get('message') }}</h2>
